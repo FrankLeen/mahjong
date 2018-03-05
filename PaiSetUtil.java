@@ -45,6 +45,8 @@ public class PaiSetUtil {
 	tempPai.setPaiOrder(pai.getPaiOrder());
 	//设置是否癞子
 	tempPai.setIsLaizi(pai.getIsLaizi());
+	//设置是否自摸牌
+	tempPai.setIsZimo(pai.getIsZimo());
 	return tempPai;
     }
     
