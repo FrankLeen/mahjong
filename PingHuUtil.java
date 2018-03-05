@@ -8,19 +8,19 @@ import java.util.List;
  */
 public class PingHuUtil {
 	
-	/**
+    /**
      * 检测平胡，基本思想如下
-	 * 先找到一对相同的牌作为将牌，移除将牌后检测剩下的牌是否皆由顺子或刻子组成
+     * 先找到一对相同的牌作为将牌，移除将牌后检测剩下的牌是否皆由顺子或刻子组成
      */
     public static boolean checkPingHu(List<Pai> innerPaiList, Pai pai) {
-    	//根据癞子数目的不同使用不同的检测平胡方法
+    	//获取临时牌组检测平胡
     	List<Pai> tempList = PaiSetUtil.getOrderedTempList(innerPaiList(), pai);
     	return canPingHu(tempList);
     }
 
-	/**
-	 * 可否平胡
-	 */
+   /**
+    * 可否平胡
+    */
     private static boolean canPingHu(List<Pai> paiList) {
     	Collections.sort(paiList);
         //放将牌的集合
@@ -65,14 +65,14 @@ public class PingHuUtil {
     private static boolean isAllKeShun(List<Pai> pingHuList) {
     	List<Pai> tempPingHuList = PaiSetUtil.getOrderedTempList(pingHuList, null);
     	if(tempPingHuList.size() < 3) {
-    		return true;
+    	    return true;
     	}
     	if(removeKeZi(tempPingHuList)) {//如果前三个是刻子，则移除
-    		return isAllKeShun(tempPingHuList);
+    	    return isAllKeShun(tempPingHuList);
     	}else if(removeShunZi(tempPingHuList)) {//否则移除顺子
-			return isAllKeShun(tempPingHuList);
-		}
-		//如果一张牌不能和后面的牌组成刻子或顺子，则不是平胡
+	    return isAllKeShun(tempPingHuList);
+	}
+	//如果一张牌不能和后面的牌组成刻子或顺子，则不是平胡
     	return false;
     }
 
@@ -83,8 +83,8 @@ public class PingHuUtil {
         Pai pai3 = checkPingHuList.get(2);
         if (pai1.getPaiId() == pai2.getPaiId() && pai1.getPaiId() == pai3.getPaiId()) {
             //成立说明为刻子，移除这三张牌
-        	PaiSetUtil.removePai(checkPingHuList, pai1, pai2, pai3);
-        	return true;
+            PaiSetUtil.removePai(checkPingHuList, pai1, pai2, pai3);
+            return true;
         }
         return false;
     }
@@ -94,30 +94,30 @@ public class PingHuUtil {
     	List<Pai> tempList = new ArrayList<Pai>();
     	Pai pai1 = checkPingHuList.get(0);
     	if(pai1.getPaiType() == 4) {
-    		//风牌不能做顺子
-    		return false;
+    	    //风牌不能做顺子
+    	    return false;
     	}
     	tempList.add(pai1);
     	for(Pai pai2 : checkPingHuList) {
-    		if(pai1.getPaiId() + 1 == pai2.getPaiId()) {
-    			tempList.add(pai2);
-    			break;
-    		}
+    	    if(pai1.getPaiId() + 1 == pai2.getPaiId()) {
+    		tempList.add(pai2);
+    		break;
+    	    }
     	}
     	if(tempList.size() < 2) {
-    		//构成不了顺子
-    		return false;
+    	    //构成不了顺子
+    	    return false;
     	}
     	for(Pai pai3 : checkPingHuList) {
-    		if(pai1.getPaiType() == pai3.getPaiType() && (pai1.getPaiId() + 2) == pai3.getPaiId()) {
-    			tempList.add(pai3);
-    			break;
-    		}
+    	    if(pai1.getPaiType() == pai3.getPaiType() && (pai1.getPaiId() + 2) == pai3.getPaiId()) {
+    		tempList.add(pai3);
+    		break;
+    	    }
     	}
     	//构成顺子，移除
     	if(tempList.size() == 3) {
-    		PaiSetUtil.removePai(checkPingHuList, tempList);
-    		return true;
+    	    PaiSetUtil.removePai(checkPingHuList, tempList);
+    	    return true;
     	}
     	return false;
     }
