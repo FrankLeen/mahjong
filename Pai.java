@@ -1,4 +1,4 @@
-package com.vs.majiang.bean;
+package com.flankleen.bean;
 
 import java.util.ArrayList;
 import java.util.List;
