@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * 牌的类
+ * 检测普通平胡的情况，只用于没有癞子的情况下
  */
 public class PingHuUtil {
 	
