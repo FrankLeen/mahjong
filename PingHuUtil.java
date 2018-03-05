@@ -9,7 +9,7 @@ import java.util.List;
 public class PingHuUtil {
 	
     /**
-     * 检测平胡，基本思想如下
+     * 检测平胡，innerPaiList指玩家可以操作的手牌，基本思想如下
      * 先找到一对相同的牌作为将牌，移除将牌后检测剩下的牌是否皆由顺子或刻子组成
      */
     public static boolean checkPingHu(List<Pai> innerPaiList, Pai pai) {
