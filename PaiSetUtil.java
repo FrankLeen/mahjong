@@ -1,4 +1,4 @@
-package com.vs.majiang.util.pai;
+package com.flankleen.util.pai;
 
 import java.util.ArrayList;
 import java.util.Collections;
