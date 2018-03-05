@@ -16,6 +16,9 @@ public class Pai implements Comparable<Pai>{
 
     //牌是否为癞子
     private boolean isLaizi;
+	
+    //牌是否自摸，用于区分是否其他玩家打出
+    private boolean isZimo;
 
     //获取牌的类型
     public int getPaiType() {
@@ -44,7 +47,17 @@ public class Pai implements Comparable<Pai>{
 
     //设置牌是否为癞子
     public void setIsLaizi(boolean isLaizi) {
-	this.isLaizi = ssLaizi;
+	this.isLaizi = isLaizi;
+    }
+	
+    //获取牌是否为自摸
+    public boolean getIsZimo() {
+	return isZimo;
+    }
+
+    //设置牌是否为自摸
+    public void setIsZimo(boolean isZimo) {
+	this.isZimo = isZimo;
     }
 
     @Override
